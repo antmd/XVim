@@ -95,9 +95,9 @@
 		A29684061A8F06E500F14667 /* IDEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A29684041A8F06E500F14667 /* IDEKit.framework */; };
 		A29684091A8F06FC00F14667 /* DVTFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A29684071A8F06FC00F14667 /* DVTFoundation.framework */; };
 		A296840A1A8F06FC00F14667 /* DVTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A29684081A8F06FC00F14667 /* DVTKit.framework */; };
+		A2B0708719C5E9E30087CA0B /* XVimEval.m in Sources */ = {isa = PBXBuildFile; fileRef = A2B0708619C5E9E30087CA0B /* XVimEval.m */; };
 		A2F2621C182CEC3600AD3DC4 /* DVTSourceTextScrollView+XVim.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F2621A182CEC3600AD3DC4 /* DVTSourceTextScrollView+XVim.m */; };
 		E905EE3B18B0461E0052D3C1 /* DVTTextSidebarView+XVim.m in Sources */ = {isa = PBXBuildFile; fileRef = E905EE3818B045FE0052D3C1 /* DVTTextSidebarView+XVim.m */; };
-		A2B0708719C5E9E30087CA0B /* XVimEval.m in Sources */ = {isa = PBXBuildFile; fileRef = A2B0708619C5E9E30087CA0B /* XVimEval.m */; };
 		ED37857D1A96F099003BE404 /* XVimReplacePromptEvaluator.m in Sources */ = {isa = PBXBuildFile; fileRef = ED37857C1A96F099003BE404 /* XVimReplacePromptEvaluator.m */; };
 /* End PBXBuildFile section */
 
@@ -250,7 +250,7 @@
 		A2F4A34114F00BD3006DA5A5 /* XVimVisualEvaluator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XVimVisualEvaluator.h; path = XVim/XVimVisualEvaluator.h; sourceTree = SOURCE_ROOT; };
 		A2F4A34214F00BD3006DA5A5 /* XVimVisualEvaluator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XVimVisualEvaluator.m; path = XVim/XVimVisualEvaluator.m; sourceTree = SOURCE_ROOT; };
 		A2FF17CF1502B291003FE648 /* XVimMotionEvaluator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XVimMotionEvaluator.h; path = XVim/XVimMotionEvaluator.h; sourceTree = SOURCE_ROOT; };
-		A2FF17D01502B291003FE648 /* XVimMotionEvaluator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XVimMotionEvaluator.m; path = XVim/XVimMotionEvaluator.m; sourceTree = SOURCE_ROOT; };
+		A2FF17D01502B291003FE648 /* XVimMotionEvaluator.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; name = XVimMotionEvaluator.m; path = XVim/XVimMotionEvaluator.m; sourceTree = SOURCE_ROOT; tabWidth = 4; };
 		BF050D7915EBF3E100CD0D12 /* NSEvent+VimHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSEvent+VimHelper.h"; path = "XVim/NSEvent+VimHelper.h"; sourceTree = SOURCE_ROOT; };
 		BF050D7A15EBF3E100CD0D12 /* NSEvent+VimHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSEvent+VimHelper.m"; path = "XVim/NSEvent+VimHelper.m"; sourceTree = SOURCE_ROOT; };
 		C30886581554C8380024161D /* NSInsetTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSInsetTextView.h; path = XVim/NSInsetTextView.h; sourceTree = SOURCE_ROOT; };
@@ -663,8 +663,6 @@
 				A2A8A4FF14E41C66002EA6C8 /* XVimCommandLine.m */,
 				A216F39F156560FE00AD2529 /* IDEEditorArea+XVim.h */,
 				A216F3A0156560FE00AD2529 /* IDEEditorArea+XVim.m */,
-				A257C28D156567250098CA09 /* DVTSourceTextView+XVim.h */,
-				A257C28E156567250098CA09 /* DVTSourceTextView+XVim.m */,
 				6E2B33321836E60600EFE4E2 /* DVTTextStorage+XVimTextStoring.h */,
 				6E2B33331836E60600EFE4E2 /* DVTTextStorage+XVimTextStoring.m */,
 				A25032B119F805110021C34E /* IDEWorkspaceTabController+XVim.h */,
@@ -768,7 +766,6 @@
 				A28F422A17EEDBC200A3F7AE /* XVimCommandField.m in Sources */,
 				A2752F4F19F3DFAD00D1642C /* NSAttributedString+Geometrics.m in Sources */,
 				A28F422B17EEDBC200A3F7AE /* XVimCommandLine.m in Sources */,
-				A28F422C17EEDBC200A3F7AE /* Hooker.m in Sources */,
 				A2B0708719C5E9E30087CA0B /* XVimEval.m in Sources */,
 				A28F422D17EEDBC200A3F7AE /* XVimEvaluator.m in Sources */,
 				A28F422E17EEDBC200A3F7AE /* XVimNormalEvaluator.m in Sources */,

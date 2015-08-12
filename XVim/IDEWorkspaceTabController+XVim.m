@@ -13,6 +13,11 @@
 #import "XVimWindow.h"
 #import "NSTextView+VimOperation.h"
 
+// Remove this when Xcode5+ headers are set as default in Build Settings
+@interface IDEWorkspaceWindow (XVim_ToRemove)
++ (id)lastActiveWorkspaceWindowController;
+@end
+
 IDEEditorOpenSpecifier* xvim_openSpecifierForContext(IDEEditorContext* context);
 /**
  * XVim Window - View structure:
@@ -324,7 +329,33 @@ static inline BOOL xvim_horizontallyStackingModeForMode(GeniusLayoutMode mode) {
         [ self changeToStandardEditor:self];
 }
 
++(void)xvim_openFileURLInActiveEditorContext:(NSURL*)fileURL
+{
+        IDEWorkspaceWindowController * lastActiveWorkspaceWindowController = [IDEWorkspaceWindow lastActiveWorkspaceWindowController] ;
+        IDEWorkspaceTabController *activeWorkspaceTabController = [lastActiveWorkspaceWindowController activeWorkspaceTabController] ;
+        [activeWorkspaceTabController xvim_openFileURLInActiveEditorContext:fileURL];
+}
 
+-(void)xvim_openFileURLInActiveEditorContext:(NSURL*)fileURL
+{
+        IDEEditorArea *editorArea = [self editorArea];
+        EditorMode editorMode = (EditorMode)[editorArea editorMode];
+        if (editorMode == GENIUS || editorMode == STANDARD) {
+                IDEEditorContext *selectedContext = [editorArea lastActiveEditorContext];
+                IDEEditorModeViewController *mode = [editorArea editorModeViewController];
+                IDENavigableItem *navItem = [IDEDocumentURLNavigableItem navigableItemWithRepresentedObject:fileURL
+                                                                                                coordinator:selectedContext.navigableItemCoordinator];
+                NSError *error = nil;
+                IDEEditorOpenSpecifier *openSpecifier = [[IDEEditorOpenSpecifier alloc] initWithNavigableItem:navItem error:&error];
+                if (!error) {
+                    [mode openEditorOpenSpecifier:openSpecifier
+                                   editorContext:selectedContext];
+                }
+                else {
+                    ERROR_LOG(@"Failed to open document %@. Error: %@", fileURL, error);
+                }
+        }
+}
 
 - (void)xvim_closeCurrentEditor{
         IDEEditorArea *editorArea = [self editorArea];

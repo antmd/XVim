@@ -26,4 +26,6 @@ typedef NS_ENUM(NSInteger,EditorMode) {
 - (void)xvim_removeAssistantEditor;
 - (void)xvim_closeOtherEditors;
 - (void)xvim_closeCurrentEditor;
+- (void)xvim_openFileURLInActiveEditorContext:(NSURL*)fileURL;
++ (void)xvim_openFileURLInActiveEditorContext:(NSURL*)fileURL;
 @end
