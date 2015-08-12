@@ -351,8 +351,7 @@
 - (XVimEvaluator*)NUMBER{
 	return [self searchCurrentWordForward:NO];
 }
-static const float XVIM_JUMP_TO_DOCUMENT_TIMEOUT_SECS = 10.0;
-static const float XVIM_JUMP_TO_DOCUMENT_POLL_SECS = 0.1;
+
 // This is internal method used by SQUOTE, BACKQUOTE
 // TODO: rename firstOfLine -> firstNonblankOfLine
 - (XVimEvaluator*)jumpToMark:(XVimMark*)mark
@@ -370,37 +369,6 @@ static const float XVIM_JUMP_TO_DOCUMENT_POLL_SECS = 0.1;
     if( ![mark.document isEqualToString:self.sourceView.documentURL.path]){
         jumpToAnotherFile = YES;
         NSURL* doc = [NSURL fileURLWithPath:mark.document];
-        
-        /*
-        IDEDocumentController* ctrl = [IDEDocumentController sharedDocumentController];
-        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-        NSError * __block jumpError = nil;
-        [ctrl openDocumentWithContentsOfURL:doc
-                                    display:YES
-                          completionHandler:^(NSDocument *document, BOOL documentWasAlreadyOpen, NSError * error) {
-                              DEBUG_LOG(@"Completion: jump to document %@: documentWasAlreadyOpen: %@, error: %@"
-                                        , doc
-                                        , (documentWasAlreadyOpen ? @"YES" : @"NO")
-                                        , jumpError);
-                              jumpError = error;
-                              dispatch_semaphore_signal(semaphore);
-                          }];
-        BOOL timeout;
-        while ((timeout = (dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW) != 0))) {
-            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
-                                     beforeDate:[NSDate dateWithTimeIntervalSinceNow:XVIM_JUMP_TO_DOCUMENT_POLL_SECS]];
-        }
-
-        if (jumpError) {
-            ERROR_LOG(@"Failed to jump to document %@. Error: %@", doc, jumpError);
-            return [XVimEvaluator invalidEvaluator];
-        }
-        if (timeout) {
-            ERROR_LOG(@"Failed to jump to document %@. timeout after %f.2 secs", doc, XVIM_JUMP_TO_DOCUMENT_TIMEOUT_SECS);
-            return [XVimEvaluator invalidEvaluator];
-        }
-         */
-        // 'display' flag on openDocumentWithContentsOfURL... doesn't seem to work
         [IDEWorkspaceTabController xvim_openFileURLInActiveEditorContext:doc];
     }
     
